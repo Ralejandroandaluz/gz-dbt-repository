@@ -15,9 +15,9 @@ sources:
               - unique
               - not_null
            - name: orders_id
-             description: greenweez raw data source of sales per order id
-           - name: pdt_id
-             description: greenweez raw data source of sales per product id
+             description: greenweez raw data source of sales per order_id
+           - name: pdt_id 
+             description: greenweez raw data source of sales per products_id
            - name: revenue
              description: greenweez raw data source of sales per revenue
            - name: quantity
@@ -27,7 +27,7 @@ sources:
         description: greenweez raw data source of sales per order id
         columns:
           - name: product_id 
-            description: greenweez raw data source of product per product id
+            description: greenweez raw data source of product per products_id
             tests:
               - unique
               - not_null
@@ -39,9 +39,9 @@ sources:
         columns:
           - name: shipping_fee
           - name: orders_id
-            description: greenweez raw data source of shipping per orders id
+            description: greenweez raw data source of shipping per orders_id
           - name: shipping_fee
-            description: greenweez raw data source of shipping per shipping fee
+            description: greenweez raw data source of shipping per shipping_fee
             
           - name: logcost
             description: greenweez raw data source of shipping per logcost
