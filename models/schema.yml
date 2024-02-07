@@ -5,35 +5,35 @@ sources:
     schema: gz_raw_data
     description: raw_data_GW
     tables:
-      - name: sales 
+      - name: sales
         identifier: raw_gz_sales
         description: greenweez raw data source of sales per date
         columns:
-           - name: date_date
-             description: greenweez raw data source of sales per date
-             tests:
-              - unique
-              - not_null
-           - name: orders_id
-             description: greenweez raw data source of sales per order_id
-           - name: pdt_id 
-             description: greenweez raw data source of sales per products_id
-           - name: revenue
-             description: greenweez raw data source of sales per revenue
-           - name: quantity
-             description: greenweez raw data source of sales per quantity
+          - name: date_date
+            description: greenweez raw data source of sales per date
+            tests:
+              - unique:
+                  - not_null 
+          - name: orders_id
+            description: greenweez raw data source of sales per order_id
+          - name: pdt_id
+            description: greenweez raw data source of sales per products_id
+          - name: revenue
+            description: greenweez raw data source of sales per revenue
+          - name: quantity
+            description: greenweez raw data source of sales per quantity
       - name: product
         identifier: raw_gz_product
         description: greenweez raw data source of sales per order id
         columns:
-          - name: product_id 
+          - name: product_id
             description: greenweez raw data source of product per products_id
             tests:
-              - unique
-              - not_null
+              - unique:
+                  - not_null
           - name: purchase_price
             description: greenweez raw data source of product per purchase price
-      - name: ship 
+      - name: ship
         identifier: raw_gz_ship
         description: greenweez raw data source of shipping per ship_cost
         columns:
@@ -46,9 +46,3 @@ sources:
             description: greenweez raw data source of shipping per logcost
           - name: ship_cost
             description: greenweez raw data source of shipping per ship_cost
-
-
-
-
-
-
