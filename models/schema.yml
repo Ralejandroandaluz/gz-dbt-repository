@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: raw
     schema: gz_raw_data
-    description: raw d ata GW
+    description: raw_data_GW
     tables:
       - name: sales 
         identifier: raw_gz_sales
@@ -42,7 +42,6 @@ sources:
             description: greenweez raw data source of shipping per orders_id
           - name: shipping_fee
             description: greenweez raw data source of shipping per shipping_fee
-            
           - name: logcost
             description: greenweez raw data source of shipping per logcost
           - name: ship_cost
