@@ -9,6 +9,7 @@ source as (
 renamed as (
 
     select
+        CONCAT(orders_id, '-', pdt_id) AS sales_id,
         date_date,
         orders_id,
         pdt_id AS products_id,
@@ -20,3 +21,16 @@ renamed as (
 )
 
 select * from renamed
+
+
+
+
+
+
+
+
+
+
+
+
+

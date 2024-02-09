@@ -2,53 +2,59 @@ version: 2
 
 sources:
   - name: raw
-    schema: gz_raw_data
-    description: raw_data_GW
+    schema: gwz_raw_data
+    description: Raw Data GW
     tables:
-      - name: sales
+      - name: sales 
         identifier: raw_gz_sales
-        description: sales of Greenweez / we have one row per productid found in each orders_id
+        description: source sales per date
         columns:
           - name: date_date
-            description: the date of purchase
-            tests:
-              - not_null
+            description: sales per date
           - name: orders_id
-            description: foreign key to ship
-            tests:
-              - unique
-          - name: product_id
-            description: foreign key to product
-            tests:
-              - unique
+            description: sales per order id
+          - name: pdt_id
+            description: sales per product id
           - name: revenue
-            description: the amount paid by the customer to purchase the product. revenue = quantity * selling.price
+            description: sales per revenue
           - name: quantity
-            description: the quantity of products purchased for this order
+            description: sales per quantity
+        tests:
+          - unique:
+              column_name: "(orders_id || '-' || pdt_id)"
+        freshness:
+          warn_after: { count: 90, period: day }
+        loaded_at_field: "CAST(date_date as TIMESTAMP)"
       - name: product
         identifier: raw_gz_product
-        description: products of Greenweez
+        description: source of product
         columns:
-          - name: product_id
-            description: primary key of the table
+          - name: products_id
+            description: unique number for a product
             tests:
               - unique
               - not_null
           - name: purchase_price
-            description: the purchase price of the product
-      - name: ship
-        identifier: raw_gz_ship
-        description: ship of Greenweez
+            description: product per purchase price
+      - name: ship 
+        identifier: raw_gz_ship 
+        description: shipping per ship_cost
         columns:
           - name: orders_id
-            description: primary key of the table
+            description: shipping per orders id
+            tests:
+              - unique
+              - not_null
           - name: shipping_fee
-            description: the price the customer pays for shipping
+            description: shipping per shipping fee
           - name: logcost
-            description: the cost of preparing the parcel in the warehouse
+            description: greenweez raw data source of shipping per logcost
           - name: ship_cost
-            description: the shipping cost paid by Greenweez/transporter
+            description: greenweez raw data source of shipping per ship_cost
 
 
-       
-            
+
+
+
+
+
