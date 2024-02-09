@@ -2,7 +2,7 @@ version: 2
 
 sources:
   - name: raw
-    schema: gwz_raw_data
+    schema: gz_raw_data
     description: Raw Data GW
     tables:
       - name: sales 
