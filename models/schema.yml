@@ -7,42 +7,48 @@ sources:
     tables:
       - name: sales
         identifier: raw_gz_sales
-        description: greenweez raw data source of sales per date
+        description: sales of Greenweez / we have one row per productid found in each orders_id
         columns:
           - name: date_date
-            description: greenweez raw data source of sales per date
+            description: the date of purchase
             tests:
-              - unique:
-                  - not_null 
+              - not_null
           - name: orders_id
-            description: greenweez raw data source of sales per order_id
-          - name: pdt_id
-            description: greenweez raw data source of sales per products_id
+            description: foreign key to ship
+            tests:
+              - unique
+          - name: product_id
+            description: foreign key to product
+            tests:
+              - unique
           - name: revenue
-            description: greenweez raw data source of sales per revenue
+            description: the amount paid by the customer to purchase the product. revenue = quantity * selling.price
           - name: quantity
-            description: greenweez raw data source of sales per quantity
+            description: the quantity of products purchased for this order
       - name: product
         identifier: raw_gz_product
-        description: greenweez raw data source of sales per order id
+        description: products of Greenweez
         columns:
           - name: product_id
-            description: greenweez raw data source of product per products_id
+            description: primary key of the table
             tests:
-              - unique:
-                  - not_null
+              - unique
+              - not_null
           - name: purchase_price
-            description: greenweez raw data source of product per purchase price
+            description: the purchase price of the product
       - name: ship
         identifier: raw_gz_ship
-        description: greenweez raw data source of shipping per ship_cost
+        description: ship of Greenweez
         columns:
-          - name: shipping_fee
           - name: orders_id
-            description: greenweez raw data source of shipping per orders_id
+            description: primary key of the table
           - name: shipping_fee
-            description: greenweez raw data source of shipping per shipping_fee
+            description: the price the customer pays for shipping
           - name: logcost
-            description: greenweez raw data source of shipping per logcost
+            description: the cost of preparing the parcel in the warehouse
           - name: ship_cost
-            description: greenweez raw data source of shipping per ship_cost
+            description: the shipping cost paid by Greenweez/transporter
+
+
+       
+            
